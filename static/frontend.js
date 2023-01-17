@@ -4,8 +4,9 @@ function formatResponseData(responses) {
     let ret = "<ul>";
     for (let response of responses) {
         ret += "<li>"
-        ret += `<a href="` + response.url + `"" target="_blank" rel="noopener noreferrer">` + response.title + "</a> by " + response.author;
-        ret += ` <a href="` + "https://www.amazon.co.jp/s?k=" + response.ISBN.replace(/-/g, "") + `" target="_blank" rel="noopener noreferrer">` + response.ISBN + `</a>`;
+        ret += `<a href=https://www.amazon.co.jp/s?k=` + response.title + `" target="_blank" rel="noopener noreferrer">` + response.title + "</a> by " + response.author + ' ';
+        ret += `<a href="https://www.amazon.co.jp/s?k=` + response.ISBN.replace(/-/g, "") + `" target="_blank" rel="noopener noreferrer">` + response.ISBN + `</a> `;
+        ret += `(<a href="` + response.url + `" target="_blank" rel="noopener noreferrer">E-hon</a>)`;
         ret += "</li>"
     }
     return ret + "</ul>";
