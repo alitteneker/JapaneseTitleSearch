@@ -10,7 +10,7 @@ const controllEHonPage = async function(page, english_keywords) {
     await page.click("#speedsearch");
     
     await page.waitForSelector("#wideMain,#noResultError");
-    await page.goto((await page.url()) + "&categoryNavigate=cbt&sortSel=3");
+    await page.goto((await page.url()) + "&categoryNavigate=cbt");//&sortSel=3");
     await page.waitForSelector("#wideMain,#noResultError");
 
     const html = await page.content();
