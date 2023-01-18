@@ -10,7 +10,7 @@ const port = 8081;
 app.use(express.static('static'));
 
 app.post('/search', encodeUrl, function(req, res) {
-    console.log('Searching for: "', req.body.keywords + '"');
+    console.log('Searching for: "' + req.body.keywords + '"');
     searchForTitle(req.body.keywords).then(function(data) {
         console.log('Found ' + data.length + ' results for "' + req.body.keywords + '"');
         res.json(data);
