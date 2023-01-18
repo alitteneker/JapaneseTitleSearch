@@ -49,7 +49,7 @@ const searchForTitle = async function(english_keywords) {
             maxConcurrency: 4,
             timeout: 150 * 1000,
             puppeteerOptions: {
-                headless: false
+                headless: true
             }
         });
         await cluster.task(async ({ page, data: keywords }) => {
