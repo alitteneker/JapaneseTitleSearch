@@ -5,7 +5,12 @@ function formatResponseData(responses) {
     for (let response of responses) {
         ret += "<li>"
         ret += `<a href=https://www.amazon.co.jp/s?k=` + response.title + `" target="_blank" rel="noopener noreferrer">` + response.title + "</a> by " + response.author + ' ';
-        ret += `<a href="https://www.amazon.co.jp/s?k=` + response.ISBN.replace(/-/g, "") + `" target="_blank" rel="noopener noreferrer">` + response.ISBN + `</a> `;
+        
+        const ISBN = response.ISBN.replace(/-/g, "");
+        ret += `<a href="https://www.amazon.co.jp/s?k=` + ISBN + `" target="_blank" rel="noopener noreferrer">(Amazon ISBN)</a> `;
+        ret += `<a href="https://www.bookfinder.com/search/?author=&title=&lang=en&submitBtn=Search&new_used=N&destination=jp&currency=USD&binding=*`
+            + `&isbn=` + ISBN + `&keywords=&minprice=&maxprice=&publisher=&min_year=&max_year=&mode=advanced&st=sr&ac=qr`
+            + `" target="_blank" rel="noopener noreferrer">(Bookfinder ISBN)</a> `;
         ret += `(<a href="` + response.url + `" target="_blank" rel="noopener noreferrer">E-hon</a>)`;
         ret += "</li>"
     }

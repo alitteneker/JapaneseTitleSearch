@@ -1,6 +1,6 @@
 const express = require('express');
 const parseUrl = require('body-parser');
-const searchForTitle = require('./searchForTitle');
+const search = require('./search');
 
 let encodeUrl = parseUrl.urlencoded({ extended: false });
 
@@ -9,9 +9,17 @@ const port = 8081;
 
 app.use(express.static('static'));
 
-app.post('/search', encodeUrl, function(req, res) {
+app.post('/search-title', encodeUrl, function(req, res) {
     console.log('Searching for: "' + req.body.keywords + '"');
-    searchForTitle(req.body.keywords).then(function(data) {
+    search.forTitle(req.body.keywords).then(function(data) {
+        console.log('Found ' + data.length + ' results for "' + req.body.keywords + '"');
+        res.json(data);
+    });
+});
+
+app.post('/search-isbn', encodeUrl, function(req, res) {
+    console.log('Searching for: "' + req.body.isbn + '"');
+    search.forISBN(req.body.isbn).then(function(data) {
         console.log('Found ' + data.length + ' results for "' + req.body.keywords + '"');
         res.json(data);
     });
